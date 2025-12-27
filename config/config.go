@@ -17,7 +17,7 @@ type Config struct {
 	DBName            string
 	DBSSLMode         string
 	R2AccountID       string
-	R2AccessKey       string
+	R2AccessKeyID     string
 	R2SecretAccessKey string
 	R2BucketName      string
 }
