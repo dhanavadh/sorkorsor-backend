@@ -6,6 +6,7 @@ import (
 	"github.com/dhanavadh/sorkorsor-backend/handlers"
 	"github.com/dhanavadh/sorkorsor-backend/repository"
 	"github.com/dhanavadh/sorkorsor-backend/storage"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -27,6 +28,13 @@ func main() {
 	gin.SetMode(cfg.GinMode)
 
 	r := gin.Default()
+
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:5173"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		AllowCredentials: true,
+	}))
 
 	r.GET("/health", func(c *gin.Context) {
 		c.JSON(200, gin.H{"status": "ok"})
