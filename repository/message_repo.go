@@ -24,9 +24,9 @@ func (r *MessageRepository) FindAll() ([]models.Message, error) {
 	return messages, nil
 }
 
-func (r *MessageRepository) FindByID(id uint) (*models.Message, error) {
+func (r *MessageRepository) FindByID(id string) (*models.Message, error) {
 	var message models.Message
-	err := r.db.First(&message, id).Error
+	err := r.db.Where("message_id = ?", id).First(&message).Error
 	if err != nil {
 		return nil, fmt.Errorf("failed to find message: %w", err)
 	}
