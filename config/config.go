@@ -25,8 +25,17 @@ type Config struct {
 
 func Load() *Config {
 	godotenv.Load()
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = os.Getenv("SERVER_PORT")
+	}
+	if port == "" {
+		port = "8080"
+	}
+
 	return &Config{
-		ServerPort:        os.Getenv("SERVER_PORT"),
+		ServerPort:        port,
 		GinMode:           os.Getenv("GIN_MODE"),
 		DBHost:            os.Getenv("DB_HOST"),
 		DBPort:            os.Getenv("DB_PORT"),

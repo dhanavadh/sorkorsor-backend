@@ -28,6 +28,10 @@ func main() {
 
 	r := gin.Default()
 
+	r.GET("/health", func(c *gin.Context) {
+		c.JSON(200, gin.H{"status": "ok"})
+	})
+
 	v1 := r.Group("/api/v1")
 	v1.GET("/messages", messageHandler.GetAllMessages)
 	v1.GET("/message/:id", messageHandler.GetMessageById)
