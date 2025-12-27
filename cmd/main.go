@@ -31,7 +31,9 @@ func main() {
 	v1 := r.Group("/api/v1")
 	v1.GET("/messages", messageHandler.GetAllMessages)
 	v1.GET("/message/:id", messageHandler.GetMessageById)
+	v1.POST("/message", messageHandler.CreateMessage)
 	v1.POST("/upload", uploadHandler.UploadFile)
+	v1.POST("/upload/presign", uploadHandler.GetPresignedURLs)
 
-	_ = r.Run(":8080")
+	r.Run(":" + cfg.ServerPort)
 }

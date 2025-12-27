@@ -20,6 +20,7 @@ type Config struct {
 	R2AccessKeyID     string
 	R2SecretAccessKey string
 	R2BucketName      string
+	R2PublicURL       string
 }
 
 func Load() *Config {
@@ -32,11 +33,12 @@ func Load() *Config {
 		DBUser:            os.Getenv("DB_USER"),
 		DBPassword:        os.Getenv("DB_PASSWORD"),
 		DBName:            os.Getenv("DB_NAME"),
-		DBSSLMode:         os.Getenv("DB_SSL_MODE"),
+		DBSSLMode:         os.Getenv("DB_SSLMODE"),
 		R2AccountID:       os.Getenv("R2_ACCOUNT_ID"),
-		R2AccessKey:       os.Getenv("R2_ACCESS_KEY"),
+		R2AccessKeyID:     os.Getenv("R2_ACCESS_KEY"),
 		R2SecretAccessKey: os.Getenv("R2_SECRET_ACCESS_KEY"),
 		R2BucketName:      os.Getenv("R2_BUCKET_NAME"),
+		R2PublicURL:       os.Getenv("R2_PUBLIC_URL"),
 	}
 }
 
